@@ -20,6 +20,6 @@
         </tr>
       </tbody>
     </table>
-    <form action='/'>{%csrf_token%}<input type='submit' value="No"></form><form action='/delete/confirm/{{target.id}}' method='post'>{%csrf_token%}<input class='delete' type='submit' value='Yes! I want to delete this'></form>
+    <form action='/'><input type='submit' value="No"></form><form action='/delete/confirm/{{target.id}}' method='post'>{%csrf_token%}<input class='delete' type='submit' value='Yes! I want to delete this'></form>
   </body>
 </html>

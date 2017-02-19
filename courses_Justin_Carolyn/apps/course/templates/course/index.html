@@ -7,6 +7,13 @@
     <link rel="stylesheet" type="text/css" href={%static "course/css/main.css"%}>
   </head>
   <body>
+    {%if messages%}
+    <ul>
+      {%for msg in messages%}
+      <li>{{msg}}</li>
+      {%endfor%}
+    </ul>
+    {%endif%}
     <h3>Add a new course</h3>
     <form action='/submit' method='post'>
       {%csrf_token%}
@@ -25,7 +32,7 @@
       <input type='submit' value='Add'>
     </form>
     <h3>Courses</h3>
-    <table>
+    <table class='courselist'>
       <thead>
         <th>Course Name</th>
         <th>Description</th>
@@ -38,7 +45,7 @@
         <td>{{course.name}}</td>
         <td>{{course.description}}</td>
         <td>{{course.created_at}}</td>
-        <td><a href='/delete/{{course.id}}'>remove</a><a href='/comment/{{course.id}}'>comment</a></td>
+        <td><a href='/delete/{{course.id}}'>remove</a> <a href='/comments/{{course.id}}'>comment</a></td>
         </tr>
         {%endfor%}
       </tbody>
