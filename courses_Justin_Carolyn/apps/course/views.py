@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Course
 
 # Create your views here.
@@ -23,3 +24,11 @@ def destroy(request, id):
     if request.method == 'POST':
         Course.objects.filter(id=id).delete()
     return redirect('/')
+
+def comments(request, id):
+    try:
+        target = Course.objects.get(id=id)
+    except Course.DoesNotExist:
+        messages.add_message(request, messaes.INFO, "Course not found!")
+        return redirect('/')
+    return render(request, 'course/comment.html', {"target":target})

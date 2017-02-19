@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Course Comments</title>
+    {%load staticfiles%}
+    <link rel="stylesheet" type="text/css" href={%static "course/css/comment.css"%}>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td>Course:</td>
+          <td>{target.name}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td>{target.description}</td>
+          <td></td>
+        </tr>
+        <!-- for loop here to display comments where course_id=target.id -->
+      </tbody>
+    </table>
+  </body>
+</html>
