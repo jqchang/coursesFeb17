@@ -17,7 +17,11 @@ def submit(request):
 
 def delete(request, id):
     # query for deleteion
-    target = Course.objects.get(id=id)
+    try:
+        target = Course.objects.get(id=id)
+    except Course.DoesNotExist:
+        messages.add_message(request, messages.INFO, "Course not found!")
+        return redirect('/')
     return render(request, 'course/delete.html', {"target":target})
 
 def destroy(request, id):
